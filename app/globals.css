@@ -1,0 +1,455 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* COMPCELL GAMING THEME - LEON PALETTE */
+
+:root {
+  /* FONDO NEGRO SÓLIDO */
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #1a1a1a;
+
+  /* PALETA LEÓN - MARRÓN CAFÉ, NARANJA COBRIZO, DORADO BRILLANTE */
+  --color-leon-brown: #8B4513;      /* Marrón café profundo */
+  --color-leon-brown-dark: #654321; /* Marrón más oscuro */
+  --color-leon-brown-light: #A0522D; /* Marrón más claro */
+
+  --color-leon-orange: #FF4500;    /* Naranja cobrizo */
+  --color-leon-orange-dark: #CC3300; /* Naranja más oscuro */
+  --color-leon-orange-light: #FF6347; /* Naranja más claro */
+
+  --color-leon-gold: #FFD700;      /* Dorado brillante */
+  --color-leon-gold-dark: #DAA520; /* Dorado más oscuro */
+  --color-leon-gold-light: #FFE55C; /* Dorado más claro */
+
+  /* GRADIENTES GAMING */
+  --gradient-leon: linear-gradient(135deg, var(--color-leon-brown) 0%, var(--color-leon-orange) 50%, var(--color-leon-gold) 100%);
+  --gradient-leon-vertical: linear-gradient(180deg, var(--color-leon-brown) 0%, var(--color-leon-orange) 100%);
+  --gradient-leon-radial: radial-gradient(circle, var(--color-leon-gold) 0%, var(--color-leon-orange) 50%, var(--color-leon-brown) 100%);
+
+  /* EFECTOS GLOW */
+  --glow-leon: 0 0 20px rgba(255, 69, 0, 0.5);
+  --glow-leon-strong: 0 0 40px rgba(255, 215, 0, 0.8);
+  --inner-glow: inset 0 0 20px rgba(255, 69, 0, 0.3);
+
+  /* SOMBRAS GAMING */
+  --shadow-leon: 0 8px 32px rgba(255, 69, 0, 0.3);
+  --shadow-leon-hover: 0 12px 48px rgba(255, 215, 0, 0.5);
+
+  /* BORDES HEXAGONALES */
+  --border-hex: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  --border-bisel: polygon(0 0, 95% 0, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0 95%);
+
+  /* TEXTO */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-accent: var(--color-leon-gold);
+}
+
+/* ANIMACIONES GAMING */
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+  25% { transform: translateY(-10px) translateX(5px); opacity: 1; }
+  50% { transform: translateY(-20px) translateX(-5px); opacity: 0.8; }
+  75% { transform: translateY(-10px) translateX(3px); opacity: 0.9; }
+}
+
+@keyframes energyPulse {
+  0%, 100% { box-shadow: var(--glow-leon); }
+  50% { box-shadow: var(--glow-leon-strong); }
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: var(--progress-width, 75%); }
+}
+
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 10px var(--color-leon-gold); }
+  50% { text-shadow: 0 0 20px var(--color-leon-gold), 0 0 30px var(--color-leon-gold); }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-1200 {
+  animation-delay: 1.2s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+@keyframes bgShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-bg-shift {
+  background-size: 400% 400%;
+  animation: bgShift 15s ease infinite;
+}
+
+/* FONDO CON PARTÍCULAS */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+.particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--color-leon-orange);
+  border-radius: 50%;
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+.particle:nth-child(2n) {
+  background: var(--color-leon-gold);
+  animation-duration: 6s;
+  animation-delay: 1s;
+}
+
+.particle:nth-child(3n) {
+  background: var(--color-leon-brown);
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+
+/* TIPOGRAFÍA FUTURISTA */
+.font-gaming {
+  font-family: 'Orbitron', 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* CARDS GAMING */
+.card-gaming {
+  background: var(--bg-secondary);
+  border: 2px solid var(--color-leon-brown);
+  clip-path: var(--border-bisel);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-gaming::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--inner-glow);
+  pointer-events: none;
+}
+
+.card-gaming:hover {
+  border-color: var(--color-leon-orange);
+  box-shadow: var(--shadow-leon-hover);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+/* BOTONES GAMING */
+.btn-gaming {
+  background: var(--gradient-leon);
+  border: none;
+  clip-path: var(--border-bisel);
+  color: var(--text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gaming::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gaming:hover::before {
+  left: 100%;
+}
+
+.btn-gaming:hover {
+  box-shadow: var(--glow-leon-strong);
+  transform: scale(1.05);
+}
+
+/* BARRAS DE PROGRESO */
+.progress-bar {
+  height: 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--color-leon-brown);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-leon);
+  width: 0%;
+  animation: progressFill 2s ease-out forwards;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: progressFill 2s ease-out forwards;
+}
+
+/* HEADER GAMING */
+.header-gaming {
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--color-leon-orange);
+  box-shadow: var(--shadow-leon);
+}
+
+.logo-gaming {
+  font-family: 'Orbitron', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  background: var(--gradient-leon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px var(--color-leon-gold);
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+/* WIDGETS DE RENDIMIENTO */
+.widget-gaming {
+  background: var(--bg-secondary);
+  border: 2px solid var(--color-leon-brown);
+  clip-path: var(--border-hex);
+  position: relative;
+}
+
+.widget-gaming:hover {
+  border-color: var(--color-leon-gold);
+  box-shadow: var(--glow-leon-strong);
+}
+
+/* EFECTOS DE HOVER */
+.hover-gaming {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hover-gaming:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-leon-hover);
+}
+
+.hover-gaming:hover::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-leon);
+  clip-path: var(--border-bisel);
+  z-index: -1;
+  animation: energyPulse 1s ease-in-out infinite;
+}
+
+/* ANIMACIONES ADICIONALES */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(1000px);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-in {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.animate-out {
+  animation: slideOutToRight 0.3s ease-in;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+.slide-in-from-right-full {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.slide-out-to-right-full {
+  animation: slideOutToRight 0.3s ease-in;
+}
+
+/* UTILIDADES TAILWIND PERSONALIZADAS */
+@layer utilities {
+  .text-leon-gold { color: var(--color-leon-gold); }
+  .bg-leon-gradient { background: var(--gradient-leon); }
+  .border-leon-orange { border-color: var(--color-leon-orange); }
+  .shadow-leon { box-shadow: var(--shadow-leon); }
+  .glow-leon { box-shadow: var(--glow-leon); }
+}
+
+  /* RESPONSIVE MOBILE IMPROVEMENTS */
+  html, body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Make images and videos fluid */
+  img, picture, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Inputs and buttons touch-friendly */
+  input, button, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Safe-area padding for devices with notch */
+  .safe-area {
+    padding-left: env(safe-area-inset-left, 16px);
+    padding-right: env(safe-area-inset-right, 16px);
+  }
+
+  /* Utility: full-screen modal on small screens */
+  .modal-full-mobile {
+    width: 100% !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+
+  /* Ensure container padding on small devices */
+  .responsive-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Banner / Hero responsive utilities */
+  .banner-responsive {
+    width: 100%;
+    max-width: 100%;
+    height: clamp(220px, 35vh, 520px); /* adapts between 220px and 520px based on viewport */
+    overflow: hidden;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain; /* show full image on small screens */
+    object-position: center;
+  }
+
+  @media (min-width: 640px) {
+    .banner-img {
+      object-fit: cover; /* cover on larger screens for visual impact */
+    }
+  }
+
+  .hero-responsive {
+    min-height: clamp(420px, 70vh, 100vh);
+  }

@@ -16,7 +16,7 @@ export default function Breadcrumb() {
   const pathname = usePathname();
 
   // No mostrar breadcrumbs en páginas de auth o admin
-  if (pathname.startsWith('/auth') || pathname === '/') {
+  if (!pathname || pathname.startsWith('/auth') || pathname === '/') {
     return null;
   }
 

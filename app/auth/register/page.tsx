@@ -144,7 +144,7 @@ export default function RegisterPage() {
         }
       `}</style>
 
-      <div className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full mx-2">
+      <div className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-md w-full mx-auto">
         <div className="bg-slate-900/80 backdrop-blur-lg rounded-2xl shadow-xl border border-blue-500/30 p-4 md:p-6">
           <div className="text-center mb-4 md:mb-5">
             <img src="/logo.png" alt="CompCell Logo" className="w-14 h-14 md:w-20 md:h-20 mx-auto mb-2 md:mb-3" />

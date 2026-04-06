@@ -145,7 +145,7 @@ export default function RegisterPage() {
       `}</style>
 
       <div className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-md w-full mx-auto">
-        <div className="bg-slate-900/80 backdrop-blur-lg rounded-2xl shadow-xl border border-blue-500/30 p-4 md:p-6">
+        <div className="bg-slate-900/80 backdrop-blur-lg rounded-2xl shadow-xl border border-blue-500/30 p-4">
           <div className="text-center mb-4 md:mb-5">
             <img src="/logo.png" alt="CompCell Logo" className="w-14 h-14 md:w-20 md:h-20 mx-auto mb-2 md:mb-3" />
             <h1 className="text-xl md:text-2xl font-bold text-blue-400 mb-1 md:mb-1">Crear Cuenta</h1>
@@ -158,7 +158,7 @@ export default function RegisterPage() {
             </div>
           )}
 
-          <form onSubmit={handleRegister} className="space-y-2 md:space-y-3">
+          <form onSubmit={handleRegister} className="space-y-2">
             <div>
               <label className="block text-gray-300 text-xs font-semibold mb-1">
                 Nombre Completo
@@ -242,7 +242,7 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <div className="mt-4">
+          <div className="mt-3">
             <div className="relative mb-3 md:mb-4">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-600"></div>

@@ -233,7 +233,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-2">
+            <div className="grid grid-cols-1 gap-2">
               <button
                 type="button"
                 onClick={handleGoogleLogin}

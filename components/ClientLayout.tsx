@@ -28,7 +28,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <main>
         {children}
       </main>
-      {!hideLayoutParts && (user || isGuest) && <Footer />}
+      {!hideLayoutParts && <Footer />}
       {!hideLayoutParts && !hideWhatsApp && <WhatsAppButton />}
     </>
   );

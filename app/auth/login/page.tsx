@@ -8,7 +8,8 @@ import {
   FacebookAuthProvider,
   sendPasswordResetEmail
 } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth, db } from '@/lib/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
@@ -80,6 +81,20 @@ export default function LoginPage() {
         prompt: 'select_account'
       });
       const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Crear o actualizar documento de usuario en Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName || '',
+        phone: '',
+        role: 'user',
+        createdAt: new Date(),
+        lastLogin: new Date(),
+        isActive: true
+      }, { merge: true });
+
       addToast(`¡Bienvenido ${result.user.displayName || result.user.email}!`, 'success');
       router.push('/');
     } catch (err: any) {

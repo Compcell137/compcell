@@ -8,7 +8,8 @@ import {
   FacebookAuthProvider,
   sendPasswordResetEmail
 } from 'firebase/auth';
-import { auth, db } from '@/lib/firebase';
+import { ref, update } from 'firebase/database';
+import { auth, db, rtdb } from '@/lib/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -94,6 +95,18 @@ export default function LoginPage() {
         lastLogin: new Date(),
         isActive: true
       }, { merge: true });
+
+      // También guardar el usuario en Realtime Database para iniciar la migración por partes
+      await update(ref(rtdb, `users/${user.uid}`), {
+        uid: user.uid,
+        email: user.email || '',
+        displayName: user.displayName || '',
+        phone: '',
+        role: 'user',
+        createdAt: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
+        isActive: true
+      });
 
       addToast(`¡Bienvenido ${result.user.displayName || result.user.email}!`, 'success');
       router.push('/');

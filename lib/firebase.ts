@@ -1,6 +1,7 @@
 // lib/firebase.ts - VERSIÓN CORREGIDA Y COMPLETA
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getAnalytics, isSupported } from "firebase/analytics";
@@ -34,6 +35,7 @@ if (typeof window !== 'undefined') {
 
 // Exportar servicios QUE SÍ VAS A USAR
 export const db = getFirestore(app);      // Firestore Database
+export const rtdb = getDatabase(app);     // Realtime Database
 export const auth = getAuth(app);         // Authentication
 export const storage = getStorage(app);   // Storage
 export { analytics };                     // Analytics (opcional)
